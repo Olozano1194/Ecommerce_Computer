@@ -1,0 +1,43 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// Components
+import Header from "./components/Header";
+// Layout
+import LayoutAdmin from './layout/LayoutAdmin';
+// pages
+// categorias
+import Portatiles from './pages/categorias/Portatiles';
+import PcEscritorio from './pages/categorias/PcEscritorio';
+import PcGamer from './pages/categorias/PcGamer';
+// User
+import RegistroUser from './pages/user/RegistroUser';
+import Login from './pages/user/Login';
+import MisCompras from './pages/user/MisCompras';
+import Carrito from './pages/user/Carrito';
+// Errors
+import Error404 from './pages/Error404';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to='/main' />} />
+        <Route path="main" element={<Header />} />        
+        <Route path="layoutAdmin" element={<LayoutAdmin />}>
+          {/* <Route index element={<Header />} />  */}
+          {/* Categorias */}
+          <Route path="portatiles" element={<Portatiles />} /> 
+          <Route path="pcEscritorio" element={<PcEscritorio />} /> 
+          <Route path="pcGamer" element={<PcGamer />} />
+          {/* User */}
+          <Route path='registrarUsuario' element={<RegistroUser />} />
+          <Route path='login' element={<Login />} />
+          <Route path='misCompras' element={<MisCompras />} />
+          <Route path='carrito' element={<Carrito />} />
+        </Route>
+        <Route path="*" element={<Error404 />} />        
+      </Routes>
+    </Router>   
+  )
+}
+
+export default App
