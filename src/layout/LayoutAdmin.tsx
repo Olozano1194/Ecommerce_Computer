@@ -3,10 +3,12 @@ import Header from "../components/Header";
 
 function LayoutAdmin() {
     return (
-        <div className="min-h-screen grid grid-cols-1">                        
+        <section className="min-h-screen grid grid-cols-1">                        
             <Header />
-            <Outlet />             
-        </div>
+            <div className="w-full">
+                <Outlet /> 
+            </div>                        
+        </section>
     );
 }
 export default LayoutAdmin;
