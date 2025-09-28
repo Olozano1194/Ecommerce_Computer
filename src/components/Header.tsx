@@ -6,11 +6,11 @@ const Header = () => {
     return (
         <header className="w-full flex flex-col items-center px-5 py-7">
             <HeaderSearch />
-            <section className="w-full flex cursor-pointer justify-between items-center mt-7">
+            <section className="w-full cursor-pointer grid grid-cols-1 items-center mt-7 md:grid-cols-2">
                 <HeaderNavBar />
                 <HeaderNavBarUser />
             </section>         
         </header>              
     );
 };
-export default Header;
+export default Header; 

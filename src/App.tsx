@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 // Components
-import Header from "./components/Header";
+import Main from './components/main/Main';
 // Layout
 import LayoutAdmin from './layout/LayoutAdmin';
 // pages
@@ -20,10 +20,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to='/main' />} />
-        <Route path="main" element={<Header />} />        
+        <Route path="/" element={<Navigate to='/layoutAdmin' />} />
         <Route path="layoutAdmin" element={<LayoutAdmin />}>
-          {/* <Route index element={<Header />} />  */}
+          <Route index element={<Main />} /> 
           {/* Categorias */}
           <Route path="portatiles" element={<Portatiles />} /> 
           <Route path="pcEscritorio" element={<PcEscritorio />} /> 
