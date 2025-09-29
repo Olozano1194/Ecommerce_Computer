@@ -12,7 +12,7 @@ const HeaderSearch = () => {
                     className='w-12 rounded-xl lg:w-24' 
                 />
             </Link>           
-            <search className='w-sm'>
+            <search className='w-72 md:w-sm'>
                 <form action="">
                     <label htmlFor="" className="border border-solid border-gray-500 flex items-center gap-x-1 p-2 rounded-lg focus-within:border-green-600">
                         <BiSearchAlt /> |
