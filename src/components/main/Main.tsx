@@ -5,7 +5,7 @@ import MainTablet from "./tablet/MainTablet";
 
 const Main = () => {
     return (
-        <main className="w-full flex flex-col px-4 md:px-7">
+        <main className="w-full flex flex-col px-4 md:px-7 xl:px-9">
             <MainPortatiles />
             <MainEscritorio />
             <MainTablet />            
