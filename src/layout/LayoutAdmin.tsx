@@ -5,9 +5,9 @@ function LayoutAdmin() {
     return (
         <section className="min-h-screen grid grid-cols-1">                        
             <Header />
-            <div className="w-full">
+            <main className="w-full">
                 <Outlet /> 
-            </div>                        
+            </main>                        
         </section>
     );
 }
