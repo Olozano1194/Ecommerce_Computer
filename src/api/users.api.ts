@@ -41,10 +41,12 @@ ecommerceApi.interceptors.response.use(
   }
 );
 
+type ApiErrorData = Record<string, string | string[] | undefined>;
+
 export const handleApiError = (error: unknown): never => {
   if (axios.isAxiosError(error)) {
     // Intenta obtener el mensaje de error del servidor
-    const errorData = error.response?.data as Record<string, any>;    
+    const errorData = error.response?.data as ApiErrorData;    
     let errorMessage = error.message;    
     // Busca el primer mensaje de error disponible
     if (errorData) {
@@ -53,7 +55,9 @@ export const handleApiError = (error: unknown): never => {
       } else if (typeof errorData.message === 'string') {
         errorMessage = errorData.message;
       } else if (errorData.detail) {
-        errorMessage = errorData.detail;
+        errorMessage = Array.isArray(errorData.detail)
+        ? errorData.detail[0]
+        : errorData.detail;
       } else {
         // Si hay múltiples errores, toma el primero
         const firstErrorKey = Object.keys(errorData)[0];
@@ -61,7 +65,7 @@ export const handleApiError = (error: unknown): never => {
           const errorValue = errorData[firstErrorKey];
           errorMessage = Array.isArray(errorValue)
             ? errorValue[0]
-            : errorValue;
+            : (errorValue || 'Error desconocido');
         }
       }
     }
@@ -79,7 +83,7 @@ export const handleApiError = (error: unknown): never => {
 };
 
 // Creamos un usuario
-export const RegisterUsers = async (user: CreateUserDto): Promise<RegisterResponseDto> => {
+export const registerUsers = async (user: CreateUserDto): Promise<RegisterResponseDto> => {
     try {
         const response: AxiosResponse<RegisterResponseDto>  = await ecommerceApi.post('/registro/', user);
         const { token, usuario } = response.data;
@@ -112,7 +116,7 @@ export const loginUser = async (credentials: LoginUserDto): Promise<LoginRespons
 }
 
 // Cerrar Sesión
-export const logout = async (): Promise<void> => {
+export const logoutUser = async (): Promise<void> => {
   try {
       await ecommerceApi.post('/logout/');     
   } catch (error) {      
