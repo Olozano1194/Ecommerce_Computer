@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// Context
+import AuthProvider  from './context/AuthContext';
 // Components
 import Main from './components/main/Main';
 // Layout
@@ -18,24 +20,26 @@ import Error404 from './pages/Error404';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to='/layoutAdmin' />} />
-        <Route path="layoutAdmin" element={<LayoutAdmin />}>
-          <Route index element={<Main />} /> 
-          {/* Categorias */}
-          <Route path="portatiles" element={<Portatiles />} /> 
-          <Route path="pcEscritorio" element={<PcEscritorio />} /> 
-          <Route path="pcGamer" element={<PcGamer />} />
-          {/* User */}
-          <Route path='registrarUsuario' element={<RegistroUser />} />
-          <Route path='login' element={<Login />} />
-          <Route path='misCompras' element={<MisCompras />} />
-          <Route path='carrito' element={<Carrito />} />
-        </Route>
-        <Route path="*" element={<Error404 />} />        
-      </Routes>
-    </Router>   
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Navigate to='/layoutAdmin' />} />
+          <Route path="layoutAdmin" element={<LayoutAdmin />}>
+            <Route index element={<Main />} /> 
+            {/* Categorias */}
+            <Route path="portatiles" element={<Portatiles />} /> 
+            <Route path="pcEscritorio" element={<PcEscritorio />} /> 
+            <Route path="pcGamer" element={<PcGamer />} />
+            {/* User */}
+            <Route path='registrarUsuario' element={<RegistroUser />} />
+            <Route path='login' element={<Login />} />
+            <Route path='misCompras' element={<MisCompras />} />
+            <Route path='carrito' element={<Carrito />} />
+          </Route>
+          <Route path="*" element={<Error404 />} />        
+        </Routes>
+      </Router>
+    </AuthProvider>       
   )
 }
 
