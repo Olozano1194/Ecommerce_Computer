@@ -17,7 +17,9 @@ export const ecommerceApi: AxiosInstance = axios.create({
 // Interceptor - agrega token automanticamente
 ecommerceApi.interceptors.request.use(config => {
     const token = localStorage.getItem('authToken');
-    if (token) {
+    if (token && !config.url?.includes('/login/')&& 
+        !config.url?.includes('/registro/') && 
+        !config.url?.includes('/logout/')) {
       config.headers.Authorization = `Token ${token}`;
     }
     return config;

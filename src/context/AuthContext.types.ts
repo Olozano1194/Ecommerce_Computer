@@ -2,11 +2,15 @@ import type { UserModel } from "../models/UserModel";
 import type { ReactNode } from "react";
 import type { LoginUserDto, CreateUserDto } from "../models/dtos/UserDto";
 
+export interface AuthTokens {
+  access: string;
+  refresh: string;
+}
 
 export interface AuthContextType {
     // Estado
     user: UserModel | null;
-    token: string | null;
+    tokens: AuthTokens | null;
     isLoading: boolean;
     isAuthenticated: boolean;
     error: string | null;
