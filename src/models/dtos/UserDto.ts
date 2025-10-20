@@ -3,14 +3,14 @@ import type { UserModel } from "../UserModel";
 export interface CreateUserDto {
     nombre: string;
     apellido: string;
-    correo?: string;
+    email?: string;
     // roles: string[];
     password?: string;
     password_confirmacion: string;   
 };
 
 export interface LoginUserDto {
-    correo: string;
+    email: string;
     password: string;    
 }
 

@@ -17,6 +17,8 @@ import MisCompras from './pages/user/MisCompras';
 import Carrito from './pages/user/Carrito';
 // Errors
 import Error404 from './pages/Error404';
+//Notificaciones
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -38,9 +40,18 @@ function App() {
           </Route>
           <Route path="*" element={<Error404 />} />        
         </Routes>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+          }} 
+        />
       </Router>
     </AuthProvider>       
   )
 }
-
 export default App
