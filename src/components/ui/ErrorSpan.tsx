@@ -1,7 +1,7 @@
 const ErrorSpan = ({children, ...props}: React.LabelHTMLAttributes<HTMLLabelElement>) => {
     return (
         <span
-            className='text-red-500 pt-1.5 text-sm'
+            className='text-red-500 text-sm'
             {...props}
         >
             {children}

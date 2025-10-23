@@ -6,5 +6,5 @@ export interface UserModel {
     correo: string;
     roles: string[];
     password: string;
-    repeatPass?: string;
+    password_confirmacion?: string;
 };

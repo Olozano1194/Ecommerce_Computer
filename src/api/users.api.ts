@@ -88,10 +88,10 @@ export const handleApiError = (error: unknown): never => {
 export const registerUsers = async (user: CreateUserDto): Promise<RegisterResponseDto> => {
     try {
         const response: AxiosResponse<RegisterResponseDto>  = await ecommerceApi.post('/registro/', user);
-        const { token, usuario } = response.data;
+        const { usuario } = response.data;
 
         //Almacenamos el token en el localstorage para las futuras solicitudes
-        localStorage.setItem('authToken', token);
+        // localStorage.setItem('authToken', token);
         localStorage.setItem('user', JSON.stringify(usuario));
         return response.data;        
     } catch (error) {

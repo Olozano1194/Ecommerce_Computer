@@ -22,22 +22,19 @@ import icons from '../../assets/Gemini_Generated_Image_aedt7waedt7waedt.png';
 // Dto
 import type { LoginUserDto } from '../../models/dtos/UserDto';
 
-// import { testLoginAPI } from '../../api/algo';
+
 const LoginPage = () => {
     const {  register, handleSubmit, formState: {errors} } = useForm<LoginUserDto>();
     const { login, isLoading } = useAuth();
     const navigate = useNavigate();
     const [_, setIsRedirecting] = useState(false);
 
-    const onSubmit = handleSubmit( async (formData: LoginUserDto) => {
-        console.log('Datos del formulario:', formData);
-        
-        try {
-            console.log('Intentando login....');
+    const onSubmit = handleSubmit( async (formData: LoginUserDto) => {       
+        try {            
             setIsRedirecting(false);
             
             await login({
-            email: formData.email, // Asegúrate de que esto coincida con el backend
+            email: formData.email, 
             password: formData.password
         });
             
@@ -52,8 +49,6 @@ const LoginPage = () => {
     });    
     
 
-    // En la consola o en un botón:
-    // testLoginAPI();
     return (        
        <Section className='w-full flex flex-col justify-center items-center'>        
         <Form onSubmit={onSubmit}>            
